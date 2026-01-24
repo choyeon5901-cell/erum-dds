@@ -1,14 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>eRUM Drone Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+
+  <header>
+    <nav>
+      <div class="logo">eRUM</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#auth">Authorize</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Future of Delivery, Today.</h1>
+        <p>eRUM provides fast, reliable, and autonomous drone delivery services for the modern world.</p>
+        <a href="#services" class="cta-button">Explore Services</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About eRUM</h2>
+      <p>Our mission is to revolutionize logistics with cutting-edge drone technology, making deliveries faster, greener, and more efficient than ever before.</p>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="service-cards">
+        <div class="card">
+          <h3>Express Delivery</h3>
+          <p>Urgent deliveries in under 30 minutes within our service area.</p>
+        </div>
+        <div class="card">
+          <h3>Scheduled Delivery</h3>
+          <p>Plan your deliveries for a specific time that suits you.</p>
+        </div>
+        <div class="card">
+          <h3>Medical Transport</h3>
+          <p>Secure and prioritized transport for medical supplies and samples.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="auth">
+        <h2>Authorization Required</h2>
+        <p>Enter your authorization code to track your delivery.</p>
+        <div class="auth-form">
+            <input type="text" id="auth-code" name="auth-code" placeholder="Enter Code">
+            <button type="submit" class="cta-button">Authorize</button>
+        </div>
+    </section>
+
+    <section id="app">
+        <h2>Live Delivery Tracker</h2>
+        <drone-delivery-app></drone-delivery-app>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Have questions? Get in touch with our team.</p>
+      <a href="mailto:contact@erum.com" class="cta-button">Email Us</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 eRUM. All rights reserved.</p>
+  </footer>
+
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>

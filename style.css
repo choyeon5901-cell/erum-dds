@@ -1,1 +1,303 @@
-/* Add styles here */
+
+/*==============================*/
+/*========= @layer =============*/
+/*==============================*/
+@layer reset, base, components, utilities;
+
+/*==============================*/
+/*========= @reset =============*/
+/*==============================*/
+@layer reset {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-heading);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/*==============================*/
+/*========= @base ==============*/
+/*==============================*/
+@layer base {
+  :root {
+    /* Colors */
+    --color-background: oklch(15.53% 0.022 253.53);
+    --color-surface: oklch(21.45% 0.033 255.48);
+    --color-primary: oklch(69.87% 0.224 233.53);
+    --color-secondary: oklch(85.39% 0.19 148.53);
+    --color-text-main: oklch(92.74% 0.009 252.62);
+    --color-text-heading: oklch(98% 0 0);
+
+    /* Typography */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Effects */
+    --shadow-sm: 0 2px 4px oklch(0% 0 0 / 0.1);
+    --shadow-md: 0 4px 10px oklch(0% 0 0 / 0.15);
+    --shadow-lg:
+      0 1px 2px hsl(255 30% 10% / 0.2),
+      0 4px 8px hsl(255 30% 10% / 0.2),
+      0 10px 20px hsl(255 30% 10% / 0.2);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+    z-index: -1;
+  }
+
+  main > section {
+    padding-block: clamp(3rem, 10vh, 6rem);
+    padding-inline: 2rem;
+    max-width: 1200px;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+
+/*==============================*/
+/*======= @components ==========*/
+/*==============================*/
+@layer components {
+
+  /* Header and Navigation */
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: oklch(15.53% 0.022 253.53 / 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid oklch(30% 0.022 253.53);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  nav a {
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: var(--color-secondary);
+  }
+
+  /* Hero Section */
+  #hero {
+    min-height: 80vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+  }
+
+  #hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  #hero p {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    max-width: 60ch;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  /* Call-to-Action Button */
+  .cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 50px;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0px var(--color-primary);
+  }
+
+  .cta-button:hover,
+  .cta-button:focus {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    box-shadow: 0 0 20px var(--color-primary);
+  }
+
+  /* Section Headings */
+  h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--color-secondary);
+  }
+
+  /* Service Cards */
+  .service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background-color: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid oklch(30% 0.022 253.53);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px oklch(0% 0 0 / 0.25);
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  /* Authorization Section */
+  #auth p {
+    margin-bottom: 2rem;
+  }
+
+  .auth-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+
+  .auth-form input[type="text"] {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--color-surface);
+    border-radius: 50px;
+    background-color: var(--color-surface);
+    color: var(--color-text-main);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .auth-form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+  }
+
+  .auth-form .cta-button {
+    cursor: pointer;
+  }
+
+  /* Drone Delivery App Placeholder */
+  drone-delivery-app {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--color-surface);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid oklch(30% 0.022 253.53);
+    margin-inline: auto;
+    max-width: 800px; /* Limit the width of the app on larger screens */
+  }
+
+
+  /* Contact Section */
+  #contact p {
+    margin-bottom: 2rem;
+  }
+
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid oklch(30% 0.022 253.53);
+    margin-top: 4rem;
+  }
+
+}
+
+/*==============================*/
+/*======= @utilities ===========*/
+/*==============================*/
+@layer utilities {
+  @media (max-width: 768px) {
+    nav ul {
+      display: none; /* Simple hiding for now, can be replaced with a hamburger menu later */
+    }
+
+    main > section {
+      padding-inline: 1rem;
+    }
+
+    .auth-form {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+}
